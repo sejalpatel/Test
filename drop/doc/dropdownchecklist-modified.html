@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>jQuery Dropdown CheckList</title>
+    <!-- Use a JQuery ThemeRoller theme, in this case 'smoothness' -->
+    <link rel="stylesheet" type="text/css" href="smoothness-1.8.13/jquery-ui-1.8.13.custom.css">
+    <link rel="stylesheet" type="text/css" href="ui.dropdownchecklist.themeroller.css">
+    
+
+    <!-- Include the basic JQuery support (core and ui) -->
+    <script type="text/javascript" src="jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.8.13.custom.min.js"></script>
+    <script type="text/javascript" src="ui.dropdownchecklist.js"></script>
+
+    <!-- Apply dropdown check list to the selected items  -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+        	$returnS1 = $('.returnS1');
+			//$("#s4").dropdownchecklist({ maxDropHeight: 150 }); 
+			$("#s1").dropdownchecklist({
+				onItemClick: function(checkbox, selector){
+					var justChecked = checkbox.prop("checked");
+				}
+			});
+			
+			$returnS2 = $('.returnS2');
+			//$("#s4").dropdownchecklist({ maxDropHeight: 150 }); 
+			$("#s2").dropdownchecklist({
+				onItemClick: function(checkbox, selector){
+					var justChecked = checkbox.prop("checked");
+				}
+			});
+	
+			$('select option').removeProp('selected');
+       });
+	   
+	    $(document).ready(function() {
+            $('#btnAdd').click(function() {
+                var num     = $('.clonedInput').length;
+				var newNum  = new Number(num + 1);
+ 
+                /*var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
+ 
+                newElem.children(':first').attr('id', 's' + newNum).attr('name', 's' + newNum);
+				
+				$('#input' + num).after(newElem);
+				*/
+				
+				
+				$("#input2").html('<select id="s2" multiple="multiple"><option>Coffee Chip</option><option>Cookie Dough</option><option>Dutch Chocolate</option><option>Fudgee Peanut Butter Cup</option></select><span class="returnS2"></span>');
+				$returnS2 = $('.returnS2');
+				$("#s2").dropdownchecklist({
+					onItemClick: function(checkbox, selector){
+						var justChecked = checkbox.prop("checked");
+					}
+				});
+		
+				$('select option').removeProp('selected');
+ 
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="input1" style="margin-bottom:4px;" class="clonedInput">
+    <select id="s1" multiple="multiple">
+        <option>Coffee Chip</option>
+        <option>Cookie Dough</option>
+        <option>Cookies 'n Cream</option>
+        <option>Dutch Chocolate</option>
+        <option>Fudgee Peanut Butter Cup</option>
+    </select>
+	<span class="returnS1"></span>
+</div>
+<div id="input2">
+ <select id="s2" multiple="multiple">
+        <option>Coffee Chip</option>
+        <option>Cookie Dough</option>
+        <option>Cookies 'n Cream</option>
+ </select>
+ <span class="returnS2"></span>
+</div>
+<div>
+    <input type="button" id="btnAdd" value="add another name" />
+</div>
+</body>
+</html>
