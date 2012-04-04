@@ -2,6 +2,7 @@
 
 $num = "192.163.2";
 
+echo "test";
 echo 24%24;
 echo "<br>";
 echo 5/24;
